@@ -1,11 +1,8 @@
+
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  font-family: 'Long Cang', cursive;
 }
 
 .App-header {
@@ -37,5 +34,10 @@ button {
   border-radius: 5px;
   border: 1px solid black;
   margin: 10px 0 10px 0;
+  font-family: 'Long Cang', cursive;
+  font-size: 2.5rem;
 
+}
+h1 {
+  font-family: 'Long Cang', cursive;
 }

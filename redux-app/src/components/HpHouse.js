@@ -20,7 +20,7 @@ const HpHouse = (props) => {
                 <Card.Meta><h2>Head of House:</h2> <h3>{props.house.headOfHouse}</h3></Card.Meta>
             </Card.Content>
             <Card.Content extra>
-               <button onClick={() => props.subtractPoints(props.house)}>Subtract 10 Points</button> <p> Points: {props.house.points} </p> <button onClick={() => props.addPoints(props.house)}>Add 10 Points</button>
+               <button onClick={() => props.subtractPoints(props.house)}>Subtract 10 Points</button> <p style={{fontSize: '3rem'}}> Points: {props.house.points} </p> <button onClick={() => props.addPoints(props.house)}>Add 10 Points</button>
             </Card.Content>
        
         </Card>

@@ -15,15 +15,15 @@ const initialState = {
 }
 
 export const hpReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case FETCHING_DATA: 
+    switch (action.type) {
+        case FETCHING_DATA:
             return {
                 ...state,
                 isLoading: true,
                 error: '',
             }
-        case FETCH_HPDATA_SUCCESS: 
-        console.log(action.payload)
+        case FETCH_HPDATA_SUCCESS:
+            console.log(action.payload)
             return {
                 ...state,
                 isLoading: false,
@@ -36,26 +36,26 @@ export const hpReducer = (state = initialState, action) => {
                 })
 
             }
-        case FETCH_HPDATA_FAIL: 
+        case FETCH_HPDATA_FAIL:
             return {
-                ...state, 
+                ...state,
                 isLoading: false,
                 error: action.payload,
             }
-        case ADD_POINTS: 
+        case ADD_POINTS:
             return {
                 ...state,
                 isLoading: false,
                 error: '',
                 hpHouses: state.hpHouses.map(house => {
-                    if(house._id === action.payload._id) {
-                        console.log('payload',action.payload)
+                    if (house._id === action.payload._id) {
+                        console.log('payload', action.payload)
                         return {
                             ...house,
                             points: house.points += 10,
-                        } 
-                        } else {
-                            return house;
+                        }
+                    } else {
+                        return house;
                     }
                 })
             }
@@ -65,20 +65,23 @@ export const hpReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: '',
                 hpHouses: state.hpHouses.map(house => {
-                    if(house._id === action.payload._id) {
-                        console.log('payload',action.payload)
-                        return {
-                            ...house,
-                            points: house.points -= 10,
-                        } 
+                    if (house._id === action.payload._id) {
+                        if (house.points > 0) {
+                            return {
+                                ...house,
+                                points: house.points -= 10,
+                            }
                         } else {
                             return house;
+                        }
+                    } else {
+                        return house;
                     }
                 })
             }
-        case HOUSE_CUP_WINNER: 
+        case HOUSE_CUP_WINNER:
             return {
-                ...state, 
+                ...state,
                 houseCup: state.hpHouses.sort((a, b) => (a.points > b.points) ? 1 : -1)[state.hpHouses.length - 1].name,
             }
         default: return state;

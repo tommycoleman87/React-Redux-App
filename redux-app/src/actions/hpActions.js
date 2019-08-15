@@ -22,19 +22,14 @@ export const getHpData = () => {
 }
 
 export const addPoints = (house) => {
-    return dispatch => {
-        dispatch({type: ADD_POINTS, payload: house})
-    }
+    return {type: ADD_POINTS, payload: house}
+    
 }
 
 export const subtractPoints = (house) => {
-    return dispatch => {
-        dispatch({type: SUBTRACT_POINTS, payload: house})
-    }
+    return {type: SUBTRACT_POINTS, payload: house}
 }
 
 export const houseCupWinner = () => {
-    return dispatch => {
-        dispatch({type: HOUSE_CUP_WINNER})
-    }
+    return {type: HOUSE_CUP_WINNER}
 }
