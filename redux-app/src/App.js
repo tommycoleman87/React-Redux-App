@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import HpHouses from './components/HpHouses';
+import { connect } from 'react-redux'
+import {getHpData, addPoints, subtractPoints, houseCupWinner} from './actions/hpActions';
+import { Card, Image } from 'semantic-ui-react';
+function App(props) {
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card style={{margin: 'auto', marginTop: '20px', opacity: '.75'}}>
+      <Image src='https://smallimg.pngkey.com/png/small/106-1068350_png-by-srg-wands-hogwarts-house-crests-pottermore.png' />
+    </Card>
+        <button onClick={props.getHpData}>{props.isLoading ? 'Loading' : 'Get Houses'}</button>
+        <h1 style={{color: 'white'}}>{props.houseCup.length > 0 && `${props.houseCup} wins the House Cup!!!!`}</h1>
+      <HpHouses houses={props.hpHouses} addPoints={props.addPoints} subtractPoints={props.subtractPoints}/>
+      <div>
+        <button onClick={props.houseCupWinner}>
+        Determine the House Cup Winner
+        </button>
+       
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    ...state,
+    hpHouses: state.hpHouses,
+    houseCup: state.houseCup,
+  }
+}
+
+export default connect(
+  mapStateToProps, {getHpData, addPoints, subtractPoints, houseCupWinner}
+)(App)
