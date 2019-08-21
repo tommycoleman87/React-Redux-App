@@ -5,6 +5,7 @@ export const FETCH_HPDATA_FAIL = 'FETCH_HPDATA_FAIL';
 export const ADD_POINTS = 'ADD_POINTS';
 export const SUBTRACT_POINTS = 'SUBTRACT_POINTS';
 export const HOUSE_CUP_WINNER = 'HOUSE_CUP_WINNER';
+
 export const getHpData = () => {
     return dispatch => {
         dispatch({type: FETCHING_DATA});
